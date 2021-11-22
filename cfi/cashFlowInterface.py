@@ -1,5 +1,4 @@
 from .scheduleMaker import ScheduleMaker
-from .menuButton import MenuButton
 import locale
 from .scheduleEditor import *
 import pyautogui
