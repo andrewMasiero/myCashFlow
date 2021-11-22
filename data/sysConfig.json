@@ -1,0 +1,26 @@
+{
+    "mainMenuTitles": [
+        "Cash Flow Schedule",
+        "Payees",
+        "Categories",
+        "Reports"
+    ],
+    "accountHeadings": [
+        "name",
+        "balance",
+        "apr",
+        "maxBalance",
+        "minBalance",
+        "creditLimit",
+        "minPayment"
+    ],
+    "scheduleHeadings": [
+        "name",
+        "payee",
+        "amount",
+        "frequency",
+        "date",
+        "paymentType"
+    ],
+    "scheduleWidths":[15, 25, 25, 20, 10]
+}
