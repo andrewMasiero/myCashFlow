@@ -82,8 +82,7 @@ def createHeadingLabels(f, names, widths):
 
 
 def displaySchedules(parent, account):
-	for item in parent.winfo_children():
-		item.destroy()
+	[item.destroy() for item in parent.winfo_children()]
 	scheduleHeadings = ["name", "payee", "amount", "frequency", "date", "paymentType"]
 	scheduleWidths = [15, 25, 25, 20, 10]
 	newScheduleButton = ttk.Button(parent, text='New Schedule', command=lambda: ScheduleMaker(account))

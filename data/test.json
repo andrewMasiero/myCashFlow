@@ -1,5 +1,5 @@
 {
-    "Main Account": {
+    "Main": {
         "attributes": {
             "name": "Fidelity Checking",
             "balance": 0,
@@ -42,7 +42,7 @@
             }
         ]
     },
-    "Sub Accounts": [
+    "Sub": [
         {
             "attributes": {
                 "name": "Savings",

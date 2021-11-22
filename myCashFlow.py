@@ -6,14 +6,12 @@ from tkcalendar import Calendar, DateEntry
 import data
 import business
 
-
-
 file = "userConfig"
 sysData = data.cfDataManager.getSysConfig()
 userData = data.loadUserData(file)
-accountNames = ['Main'] + [s.attributes['name'] for s in userData['Sub Accounts']]
-accounts = [userData['Main Account']]
-[accounts.append(x) for x in userData['Sub Accounts']]
+accountNames = ['Main'] + [s.attributes['name'] for s in userData['Sub']]
+accounts = [userData['Main']]
+[accounts.append(x) for x in userData['Sub']]
 
 
 # start drawing UI

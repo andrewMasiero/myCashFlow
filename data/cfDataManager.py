@@ -23,8 +23,8 @@ def convertAccountToJson(account):
 
 def save(fileName, userData):
 	data = {}
-	data['Main Account'] = convertAccountToJson(userData['Main Account'])
-	data['Sub Accounts'] = [convertAccountToJson(a) for a in userData['Sub Accounts']]
+	data['Main'] = convertAccountToJson(userData['Main'])
+	data['Sub'] = [convertAccountToJson(a) for a in userData['Sub']]
 	saveUserConfig(fileName, data)
 
 def convertAccountToObject(account):
@@ -40,8 +40,8 @@ def convertScheduleToObject(schedule):
 
 def loadUserData(file):
 	userData = getUserConfig(file)
-	objects = {'Main Account':{},
-		"Sub Accounts":[convertAccountToObject(x) for x in userData['Sub Accounts']]}
-	objects['Main Account'] = convertAccountToObject(userData['Main Account'])
+	objects = {'Main':{},
+		"Sub":[convertAccountToObject(x) for x in userData['Sub']]}
+	objects['Main'] = convertAccountToObject(userData['Main'])
 	return objects
 	
