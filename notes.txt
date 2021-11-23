@@ -1,0 +1,3 @@
+11/24/21
+* having difficulty setting default values for entry widgets for the schedule maker
+	* same code style/structure is used for schedule editor. why isn't it working?

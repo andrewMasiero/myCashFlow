@@ -22,9 +22,6 @@ def createMainWindow():
 	r.columnconfigure(0, weight=1)
 	r.columnconfigure(1, weight=8)
 	r.columnconfigure(2, weight=1)
-	# r.rowconfigure(0, weight=1)
-	# r.rowconfigure(1, weight=9)
-
 	return r
 
 def createFrame(parent, col, row, pad):
@@ -42,8 +39,6 @@ def addButtonsHorizontal(parent, names, startColumn=0, startRow=0):
 	return buttons
 
 def addAccountButton(parent, name, account, contentFrame, col=0):
-	# print(account.attributes['name'])
-	# print(account.schedules)
 	button = ttk.Button(parent, text=name, width=20)
 	button.grid(column=col, row=1)
 	button.bind('<ButtonPress-1>', lambda e: displaySchedules(contentFrame, account))
