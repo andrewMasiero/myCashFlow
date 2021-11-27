@@ -47,7 +47,7 @@ def addAccountButtons(parent, names, accounts, contentFrame):
 	for i in range(len(names)):
 		addAccountButton(parent, names[i], accounts[i], contentFrame, i)
 
-def createScheduleLabel(contentFrame, f, schedule):
+def createScheduleLabel(contentFrame, f, schedule, account):
 	values = schedule.attributes
 	names = list(values.keys())
 	names.pop()
@@ -65,7 +65,7 @@ def createScheduleLabel(contentFrame, f, schedule):
 			v = locale.currency(float(v), grouping=True)
 		l = ttk.Label(f, text=v, background=c, width=widths[i], borderwidth=1, relief='solid', anchor=anchor, padding=(5, 0, 5, 0))
 		l.grid(column=i, row=0)
-		l.bind('<Double-ButtonPress-1>', lambda e: ScheduleEditor(contentFrame, f, schedule))
+		l.bind('<Double-ButtonPress-1>', lambda e: ScheduleEditor(contentFrame, f, schedule, account))
 
 def createHeadingLabels(f, names, widths):
 	s = ttk.Style()
@@ -86,4 +86,4 @@ def displaySchedules(contentFrame, account):
 	heading = createHeadingLabels(headingRow, scheduleHeadings, scheduleWidths)
 	labelFrames = [createFrame(contentFrame, 0, i+2, 0) for i in range(len(account.schedules))]
 	for i in range(len(labelFrames)):
-		createScheduleLabel(contentFrame, labelFrames[i], account.schedules[i])
+		createScheduleLabel(contentFrame, labelFrames[i], account.schedules[i], account)

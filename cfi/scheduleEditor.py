@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 
 class ScheduleEditor(Toplevel):
-	def __init__(self, contentFrame, label, schedule):
+	def __init__(self, contentFrame, label, schedule, account):
 		super().__init__()
 		self.title("Schedule Editor")
 		self.geometry("250x200")
@@ -31,12 +31,14 @@ class ScheduleEditor(Toplevel):
 			entryBoxes[i].bind('<Return>', lambda e: self.complete(label, schedule, entryBoxes, sVars))
 		entryBoxes[0].focus()
 
-		# create cancel and ok buttons
+		# create buttons
 		cancel = ttk.Button(self, text='Cancel', command=lambda: self.destroy())
 		cancel.grid(column=1, row=n+3)
 		ok = ttk.Button(self, text='OK', command=lambda: self.complete(label, schedule, entryBoxes, sVars))
 		ok.grid(column=2, row=n+3)
 		ok.bind('<Return>', lambda e: self.complete(label, schedule, entryBoxes))
+		delete = ttk.Button(self, text='Delete', command=lambda: self.deleteSchedule(contentFrame, label, schedule, account))
+		delete.grid(column=3, row=n+3)
 
 	def complete(self, label, schedule, entryBoxes, sVars):
 		values = ['fdsa', 'vcxs', 'rewq', 'yuio', 'gfds', 'vcxz']
@@ -48,4 +50,9 @@ class ScheduleEditor(Toplevel):
 			schedule.attributes[keys[i]] = entryBoxes[i].get()
 		for key in keys:
 			print(schedule.attributes[key])
+		self.destroy()
+
+	def deleteSchedule(self, contentFrame, label, schedule, account):
+		[l.destroy() for l in contentFrame.winfo_children() if l == label]
+		account.removeSchedule(schedule)
 		self.destroy()
