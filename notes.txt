@@ -1,3 +1,7 @@
-11/24/21
+11/21/21
 * having difficulty setting default values for entry widgets for the schedule maker
 	* same code style/structure is used for schedule editor. why isn't it working?
+	* used entry.insert() method to load sample text
+	* this wasn't necessary for scheuleEditor; don't know why it was needed here
+
+11/24/21

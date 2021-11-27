@@ -1,26 +1,8 @@
 {
-    "mainMenuTitles": [
-        "Cash Flow Schedule",
-        "Payees",
-        "Categories",
-        "Reports"
-    ],
-    "accountHeadings": [
-        "name",
-        "balance",
-        "apr",
-        "maxBalance",
-        "minBalance",
-        "creditLimit",
-        "minPayment"
-    ],
-    "scheduleHeadings": [
-        "name",
-        "payee",
-        "amount",
-        "frequency",
-        "date",
-        "paymentType"
-    ],
-    "scheduleWidths":[15, 25, 25, 20, 10]
+    "mainMenuTitles": ["Cash Flow Schedule", "Payees", "Categories", "Reports"],
+    "accountHeadings": [ "name", "balance", "apr", "maxBalance", "minBalance", "creditLimit", "minPayment"],
+    "defaultAccount": [ "name", "0.00", "0.00", "0.00", "0.00", "0.00", "0.00"],
+    "scheduleHeadings": [ "name", "payee", "amount", "frequency", "date", "paymentType"],
+    "defaultSchedule": ["Name", "Payee", "0.00", "Monthly", "date", "Debit"],
+    "scheduleWidths": [15, 25, 25, 20, 10]
 }

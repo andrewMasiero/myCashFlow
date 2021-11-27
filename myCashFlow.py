@@ -3,11 +3,12 @@ import cfi
 from tkinter import *
 from tkinter import ttk
 from tkcalendar import Calendar, DateEntry
+from data.cashFlowConfig import sysConfig
 import data
 import business
 
 file = "userConfig"
-sysData = data.cfDataManager.getSysConfig()
+# sysConfig = data.getSysConfig()
 userData = data.loadUserData(file)
 accountNames = ['Main'] + [s.attributes['name'] for s in userData['Sub']]
 accounts = [userData['Main']]
@@ -24,7 +25,7 @@ mainFrame.pack()
 menuFrame = cfi.createFrame(mainFrame, 0, 0, 20)
 contentFrame = cfi.createFrame(mainFrame, 0, 1, 20)
 
-menuButtons = cfi.addButtonsHorizontal(menuFrame, sysData['mainMenuTitles'], 0, 0)
+menuButtons = cfi.addButtonsHorizontal(menuFrame, sysConfig['mainMenuTitles'], 0, 0)
 cfi.addAccountButtons(menuFrame, accountNames, accounts, contentFrame)
 cfi.displaySchedules(contentFrame, accounts[0])
 

@@ -21,7 +21,11 @@ Current functionality:
 
 To Do:
 * schedule maker window to create new schedule
+	* create new schedule in data
+	* update display with new schedule
 * schedule editor window to allow for deleting a schedule
+	* create delete button
+	* implement delete functionality
 * display account info
 * add/delete accounts
 * update accounts

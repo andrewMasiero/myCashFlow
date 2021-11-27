@@ -47,25 +47,25 @@ def addAccountButtons(parent, names, accounts, contentFrame):
 	for i in range(len(names)):
 		addAccountButton(parent, names[i], accounts[i], contentFrame, i)
 
-def createScheduleLabel(f, schedule):
+def createScheduleLabel(contentFrame, f, schedule):
 	values = schedule.attributes
 	names = list(values.keys())
 	names.pop()
 	widths = [15, 25, 25, 20, 10]
-	sVars = [StringVar() for x in names]
+	# sVars = [StringVar() for x in names]
 	
 	c = {'Credit': "light green", 'Debit': 'light pink'}
 	c = c[schedule.attributes['paymentType']]
 	for i in range(len(names)):
-		sVars[i].set(values[names[i]])
-		sVar = sVars[i].get()
+		# sVars[i].set(values[names[i]])
+		v = values[names[i]]
 		anchor = 'w'
 		if names[i] == 'amount':
 			anchor = 'e'
-			sVar = locale.currency(float(sVar), grouping=True)
-		l = ttk.Label(f, text=sVar, background=c, width=widths[i], borderwidth=1, relief='solid', anchor=anchor, padding=(5, 0, 5, 0))
+			v = locale.currency(float(v), grouping=True)
+		l = ttk.Label(f, text=v, background=c, width=widths[i], borderwidth=1, relief='solid', anchor=anchor, padding=(5, 0, 5, 0))
 		l.grid(column=i, row=0)
-		l.bind('<Double-ButtonPress-1>', lambda e: ScheduleEditor(f, sVars, schedule))
+		l.bind('<Double-ButtonPress-1>', lambda e: ScheduleEditor(contentFrame, f, schedule))
 
 def createHeadingLabels(f, names, widths):
 	s = ttk.Style()
@@ -76,14 +76,14 @@ def createHeadingLabels(f, names, widths):
 		l.grid(column=i, row=0)
 
 
-def displaySchedules(parent, account):
-	[item.destroy() for item in parent.winfo_children()]
+def displaySchedules(contentFrame, account):
+	[item.destroy() for item in contentFrame.winfo_children()]
 	scheduleHeadings = ["name", "payee", "amount", "frequency", "date", "paymentType"]
 	scheduleWidths = [15, 25, 25, 20, 10]
-	newScheduleButton = ttk.Button(parent, text='New Schedule', command=lambda: ScheduleMaker(account))
+	newScheduleButton = ttk.Button(contentFrame, text='New Schedule', command=lambda: ScheduleMaker(contentFrame, account))
 	newScheduleButton.grid(column=0, row=0, sticky='w')
-	headingRow = createFrame(parent, 0, 1, 0)
+	headingRow = createFrame(contentFrame, 0, 1, 0)
 	heading = createHeadingLabels(headingRow, scheduleHeadings, scheduleWidths)
-	labelFrames = [createFrame(parent, 0, i+2, 0) for i in range(len(account.schedules))]
+	labelFrames = [createFrame(contentFrame, 0, i+2, 0) for i in range(len(account.schedules))]
 	for i in range(len(labelFrames)):
-		createScheduleLabel(labelFrames[i], account.schedules[i])
+		createScheduleLabel(contentFrame, labelFrames[i], account.schedules[i])
